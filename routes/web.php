@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Guest\PageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'index'] );
+
+Route::get('/movie/{id}', [PageController::class, 'show'])->name('SingleMovie');

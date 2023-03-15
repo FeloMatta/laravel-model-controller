@@ -4,30 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel 9 + Bootstrap Template</title>
-
-        {{-- Includiamo gli assets con la direttiva @vite --}}
         @vite('resources/js/app.js')
+
+        <title>Laravel Model Controller</title>
     </head>
     <body>
-
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <img src="{{ Vite::asset('resources/img/laravel.png') }}" alt="">
-
-                                <h1 class="card-title">Laravel 9 + Bootstrap Template</h1>
+        <h1 class="text-center">Laravel Model Controller</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-evenly flex-wrap">
+                        @foreach ($movies as $element)    
+                            <div class="card m-3" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $element->title }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Original title: {{ $element->original_title }}</h6>
+                                    <p class="card-text">Date of release: {{ $element->date }}</p>
+                                    <p class="card-text">Vote: {{ $element->vote }}</p>
+                                    <a href="{{ route('SingleMovie', $element->id) }}" class="btn btn-primary">Movie details</a>
+                                </div>
                             </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </main>
-
+        </div>
     </body>
 </html>
